@@ -6,9 +6,11 @@ import numpy as np
 
 def get_ic(str, freq):
     """
-    input discription
+    input
         @str: the string or list you want to be calculated
         @freq: the frequency of every alphabet in your str
+    output
+        return the index of coincidence
     """
     sum = 0 # sum of the series
     for f in freq:

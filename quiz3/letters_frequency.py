@@ -6,8 +6,10 @@ import numpy as np
 
 def get_freq(str):
     """
-    input discription
-    @str: the string or list you want to get its frequency for every alphabet
+    input
+        @str: the string or list you want to get its frequency for every alphabet
+    output
+        @sorted_freq: a sorted list which record the frequency for every alphabet
     """
     freq = {}
     for letter in str:

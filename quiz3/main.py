@@ -1,18 +1,21 @@
 import letters_frequency
 import index_of_coincidence
+import group
+
+# constants
+ROUND = 10
+TARGET_IC = 0.068 # English
+EPSILON = 0.005
 
 # message stdin
 mes = input("Enter message: ")
 print() # change line in output
 
-# get the max groups number user want to test
-max = int(input("Enter max number of groups you want to calculate ICs: "))
-print() # change line in output
-
 # remove space
 mes = mes.replace(' ', '')
 
-for key_length in range(1,max+1):
+min_key_length = 0
+for key_length in range(1, ROUND+1):
     # initialize the 2D list to store alphabets from every group
     groups = [[] for _ in range(key_length)]
 
@@ -29,14 +32,29 @@ for key_length in range(1,max+1):
         ic = index_of_coincidence.get_ic(group, freq)
         groups_ic[i] = ic
 
-    # get avg ic of all groups
+    # get avg ic from all groups and difference between avg ic and target ic
     avg = sum(groups_ic) / len(groups_ic)
-    print(key_length, " groups of average IC is: ", avg)
+    differ = abs(avg - TARGET_IC)
+    
+    # print the avg ic
+    print("key_length: ", key_length, ", average ic: ", avg)
+    
+    # compare if the avg ic is "close" to the value of target ic
+    if differ < EPSILON:
+        min_key_length = key_length
+        break
+
+
     
 """ draft
 get input
 filter str
-sperate to different groups
-calculate ic from every group
-avarage total ic
+for every key length in MAX_ROUND:
+    sperate to different groups
+    calculate ic from every group
+    avarage total ic
+    differ = abs(avg_ic - TARGET_IC)
+    if differ < EPSILON:
+        record key_length
+        break
 """
