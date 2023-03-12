@@ -2,7 +2,6 @@
 Student ID: 109704065
 Credit by K.Wei
 """
-import numpy as np
 
 def get_freq(str):
     """
