@@ -9,7 +9,9 @@ TARGET_IC = 0.068 # English
 EPSILON = 0.005
 
 # message stdin
-mes = input("Enter message: ")
+print("Enter message: ", end='')
+mes = sys.stdin.readline()
+mes = mes.rstrip()
 print() # change line in output
 
 # remove space
@@ -76,16 +78,33 @@ for i, group in enumerate(target_groups):
 plaintext = formula.combine_group(target_groups, size)
 
 # print the key
-print("key: ", end='')
+sys.stdout.write("key: ")
 for alphabet in key:
-    print(alphabet, end='')
-print()
+    sys.stdout.write(alphabet)
+sys.stdout.write('\n')
 
-# print the plain text
-for alphabet in plaintext:
-    print(alphabet, end='')
+# print the plain text with stdout
+sys.stdout.write("The plain text:\n")
+for index, alphabet in enumerate(plaintext):
+    if index%5 == 0:
+        sys.stdout.write(' ')
+    sys.stdout.write(alphabet)
+sys.stdout.write("\n")
 
+# stdout to file
+file = sys.stdout
+sys.stdout = open('message1_out.txt', 'w')
 
+# print the plain text to file with stdout
+for index, alphabet in enumerate(plaintext):
+    if index!=0 and index%min_key_length == 0:
+        sys.stdout.write(' ')
+    sys.stdout.write(alphabet)
+sys.stdout.write("\n")
+
+# close file
+sys.stdout.close()
+sys.stdout = file
 
 """ draft
 get input
