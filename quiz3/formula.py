@@ -2,8 +2,6 @@
 Student ID: 109704065
 Credit by K.Wei
 """
-import numpy as np
-import math 
 
 def get_ic(str, freq):
     """

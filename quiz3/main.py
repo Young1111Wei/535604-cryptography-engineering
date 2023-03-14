@@ -1,3 +1,8 @@
+"""
+Student ID: 109704065
+Credit by K.Wei
+"""
+
 import letters_frequency
 import formula
 import group as get_group
