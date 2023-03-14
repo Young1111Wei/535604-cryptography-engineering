@@ -80,7 +80,7 @@ for i, group in enumerate(target_groups):
 plaintext = formula.combine_group(target_groups, size)
 
 # stdout to file
-filename = 'message2_out.txt'
+filename = 'message_out.txt'
 file = sys.stdout
 sys.stdout = open(filename, 'w')
 
